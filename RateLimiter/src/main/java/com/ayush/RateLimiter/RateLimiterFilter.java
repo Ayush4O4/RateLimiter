@@ -13,17 +13,15 @@ import java.util.concurrent.ConcurrentHashMap;
 @RequiredArgsConstructor
 public class RateLimiterFilter implements Filter {
 
-    private final ConcurrentHashMap<String,TockenBucket> buckets=new ConcurrentHashMap<>();
-    public TockenBucket getBucketForClient(String clientIp){
-        return buckets.computeIfAbsent(clientIp,ip->new TockenBucket(10,1.0));
-    }
+    //private final RateLimiterStrategy strategy = new TokenBucketRateLimiter(10, 1.0);
+    private final RateLimiterStrategy strategy=new FixedWindowCounterRateLimiter(10,1);
     @Override
     public void doFilter(ServletRequest request, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
         if(((HttpServletRequest) request).getRequestURI().equals("/limited")){
             String ip=request.getRemoteAddr();
-            TockenBucket bucket=getBucketForClient(ip);
-            if(bucket.tryConsume()){
+
+            if(strategy.tryConsume(ip)){
                 filterChain.doFilter(request,servletResponse);
             }
             else{
