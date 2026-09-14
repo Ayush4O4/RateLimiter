@@ -1,8 +1,10 @@
-package com.ayush.RateLimiter;
+package com.ayush.RateLimiter.fixedwindowcounter;
+
+import com.ayush.RateLimiter.RateLimiterStrategy;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-public class FixedWindowCounterRateLimiter implements RateLimiterStrategy{
+public class FixedWindowCounterRateLimiter implements RateLimiterStrategy {
     private final long maxRequestsPerWindow;
     private final long windowSizeSeconds;
 

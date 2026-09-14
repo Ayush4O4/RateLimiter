@@ -1,4 +1,6 @@
-package com.ayush.RateLimiter;
+package com.ayush.RateLimiter.tokenBucket;
+
+import com.ayush.RateLimiter.RateLimiterStrategy;
 
 import java.util.concurrent.ConcurrentHashMap;
 

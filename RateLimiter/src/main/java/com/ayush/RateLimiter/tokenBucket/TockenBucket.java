@@ -1,9 +1,4 @@
-package com.ayush.RateLimiter;
-
-
-import org.springframework.stereotype.Component;
-
-import java.util.concurrent.ConcurrentHashMap;
+package com.ayush.RateLimiter.tokenBucket;
 
 
 public class TockenBucket {

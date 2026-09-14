@@ -1,4 +1,4 @@
-package com.ayush.RateLimiter;
+package com.ayush.RateLimiter.fixedwindowcounter;
 
 
 import java.util.concurrent.TimeUnit;
