@@ -29,7 +29,7 @@ public class SlidingWindowCounter {
         double elapsedInCurrent=now-windowStart;
         double overlapFunction=1.0-(elapsedInCurrent/(double) TimeUnit.SECONDS.toNanos(windowSizeSeconds));
         double estimated=currentCount+prevCount*overlapFunction;
-       
+
         if(estimated<maxRequest){
             currentCount++;
             return true;
