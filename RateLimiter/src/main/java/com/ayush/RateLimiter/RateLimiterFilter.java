@@ -1,5 +1,6 @@
 package com.ayush.RateLimiter;
 
+import com.ayush.RateLimiter.slidingWindowCounter.SlidingWindowCounterRateLimiter;
 import com.ayush.RateLimiter.slidingWindowLog.SlidingWindowLogRateLimiter;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,7 +16,8 @@ public class RateLimiterFilter implements Filter {
 
     //private final RateLimiterStrategy strategy = new TokenBucketRateLimiter(10, 1.0);
     //private final RateLimiterStrategy strategy=new FixedWindowCounterRateLimiter(10,1);
-    private final RateLimiterStrategy strategy=new SlidingWindowLogRateLimiter(10,5);
+    //private final RateLimiterStrategy strategy=new SlidingWindowLogRateLimiter(10,5);
+    private final RateLimiterStrategy strategy=new SlidingWindowCounterRateLimiter(10,5);
     @Override
     public void doFilter(ServletRequest request, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
